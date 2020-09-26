@@ -20,6 +20,11 @@ int	main(void)
 	printf("strcpy = |%s|\n", strcpy(dest, str));
 	printf("ft_strcpy = |%s|\n", ft_strcpy(dest, str));
 
-	printf("strcmp = %d\n", strcmp(str, str_long));
-	printf("ft_strcmp = %d\n", ft_strcmp(str, str_long));
+	printf("strcmp = %d\n", strcmp("a", "a"));
+	printf("ft_strcmp = %d\n", ft_strcmp("a", "a"));
+
+	printf(" -- write = %zd\n", write(1, str_long, ft_strlen(str_long)));
+	printf(" -- ft_write = %zd\n", ft_write(1, str_long, ft_strlen(str_long)));
+
+	printf("ft_strdup = %s\n", ft_strdup(str_long));
 }
