@@ -5,6 +5,7 @@ SRCS = ft_strlen.s\
 	   ft_strcpy.s\
 	   ft_strcmp.s\
 	   ft_write.s\
+	   ft_read.s\
 	   ft_strdup.s
 OBJS    =   $(SRCS:.s=.o)
 
@@ -13,7 +14,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-test: $(NAME)
+test: $(OBJS) $(NAME)
 	gcc $(FLAGS) main.c $(NAME) -o test
 
 %.o: %.s
@@ -24,7 +25,9 @@ clean   :
 
 fclean  : clean
 	rm -rf $(NAME)
+	rm -rf test
 
 re      : fclean all
+re_test      : fclean test
 
 .PHONY  : all clean fclean re

@@ -13,6 +13,7 @@ loop:		inc rdi
 			mov [rdi], rdx
 			cmp [rdi], byte 0
 			jnz loop
+			mov [rdi], byte 0
 
 return:			
 		mov rax, rcx
