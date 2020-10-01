@@ -14,6 +14,7 @@ loop:			inc rdi
 				je end_of_string
 				cmp dl, cl
 				je loop
+				ret
 
 end_of_string:	sub dl, cl
 				movsx rax, dl
