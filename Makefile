@@ -1,12 +1,19 @@
 NAME    =   libasm.a
-FLAGS   =   -Wall -Wextra -Werror
+OS = $(shell uname)
+FLAGS   =   -Wall -Wextra -Werror -no-pie 
+ifeq ($(OS),Darwin)
 FLAGS_ASM = -fmacho64
-SRCS = srcs_mac/ft_strlen.s\
-	   srcs_mac/ft_strcpy.s\
-	   srcs_mac/ft_strcmp.s\
-	   srcs_mac/ft_write.s\
-	   srcs_mac/ft_read.s\
-	   srcs_mac/ft_strdup.s
+DIR = srcs_mac
+else
+FLAGS_ASM = -felf64
+DIR = srcs_linux
+endif
+SRCS = $(DIR)/ft_strlen.s\
+	   $(DIR)/ft_strcpy.s\
+	   $(DIR)/ft_strcmp.s\
+	   $(DIR)/ft_write.s\
+	   $(DIR)/ft_read.s\
+	   $(DIR)/ft_strdup.s
 OBJS    =   $(SRCS:.s=.o)
 
 all : $(NAME)
